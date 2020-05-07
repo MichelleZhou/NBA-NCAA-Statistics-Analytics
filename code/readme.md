@@ -12,21 +12,15 @@ We decided to look into college and professional basketball data to get a better
 
 ## Available functionality
 - [x] NCAA Player lookup
-	> Determines whether the specified player was on an NCAA team between the years of 2008 and 2010.
-	> If the specified player was on an NCAA team, search through the database to see whether they
-	> were on an NBA team from 2000 until 2018. Player statistics are outputted for any reults found.
+	> Determines whether the specified player was on an NCAA team between the years of 2008 and 2010. If the specified player was on an NCAA team, a search is conducted through the database to see whether they were on an NBA team from 2000 until 2018. Player statistics are outputted for any reults found.
 - [x] NBA Player lookup
-    > Determines whether the specified player was on an NBA team any time between 2000 and 2018.
-    > Relevant statistics pertaining to the player's carrer shooting averages, rebound averages,
-    > and other relevant data are calculated and outputted. Again, if the player was also on an NCAA
-    > team between 2008 and 2010, those statistics are calculated for their college basketball career
-    > as well. 
-- [ ] Annual NCAA statistics review
-        > Average height and height range
-	> Best school
-	> Worst school
-	> Top 10 players with highest # of fg, three pointers, free throws, rebound, assists, etc
-	> Top 10 players with highest % of ^^
+    > Determines whether the specified player was on an NBA team any time between 2000 and 2018. Relevant statistics pertaining to the player's carrer shooting averages, rebound averages, and other relevant data are calculated and outputted. Again, if the player was also on an NCAA team between 2008 and 2010, those statistics are calculated for their college basketball career as well. 
+- [x] Annual NCAA statistics review
+    > Several functionalities are included in this menu to give a broader glimpse into some NCAA stats:
+	- Average height of players for each year.
+	- Best offensive and defensive players for a given year.
+	- Best and worst overall players for a given year.
+	- Highest scoring players for a given year.
 
 - [ ] Annual NBA statistics review
         > Average height and height range

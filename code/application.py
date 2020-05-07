@@ -45,6 +45,10 @@ def printNBAMenu():
     print("6. Worst overall players of the year")
 
 
+def printInterestingMenu():
+    #Interesting Menu with some analytical data for NCAA and NBA
+    print("Which of the following statistics would you like to see?\n")
+    print("1. Players that ")
 
 def ncaaLookup():
     print("You selected NCAA Player Lookup...")
@@ -345,6 +349,8 @@ def annualNCAA():
             print("Please check your selection: {}".format(user_input))
             printNCAAMenu()
             user_input = input('\n').strip()
+
+def interestingMenu():
 
 
 def annualNBA():
