@@ -15,14 +15,14 @@ if __name__ == '__main__':
 	window.title('Database System Project - Basketball')
 	window.geometry('600x450')
 	window.resizable(width=False, height=False)
-	image_file = [tk.PhotoImage(file='dear-basketball.gif', format='gif -index %i' %(i)) for i in range(9)]
+	image_file = [tk.PhotoImage(file='code/dear-basketball.gif', format='gif -index %i' %(i)) for i in range(9)]
 	def update(ind):
 		if ind == 9:
 			ind = 0
 		frame = image_file[ind]
 		ind+=1
 		label.configure(image=frame)
-		window.after(1000, update, ind)
+		window.after(1800, update, ind)
 	label = tk.Label(window)
 	label.pack()
 	window.after(0, update, 0)
