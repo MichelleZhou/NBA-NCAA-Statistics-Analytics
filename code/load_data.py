@@ -10,7 +10,6 @@ cursor = conn.cursor()
 
 
 # Preprocessing of csv file to replace all dashes - with zeroes for easier inserts
-<<<<<<< HEAD
 def replaceDashesWithZeroes(infile, outfile, ncaa):
     with open(infile, 'r') as inf, open(outfile, 'w',newline='\n', encoding='utf-8') as outf:
         reader = csv.reader(inf, delimiter=',')

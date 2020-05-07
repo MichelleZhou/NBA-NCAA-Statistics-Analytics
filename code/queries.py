@@ -65,7 +65,7 @@ def nba_player_lookup(name):
 #Average height and height range
 def annual_ncaa_height(year):
 
-    query=" SELECT AVG(height),MAX(height),MIN(height) from ncaa_stats,ncaa_players WHERE ncaa_stats.player_id=ncaa_players.id AND ncaa_stats.year=%s GROUP BY ncaa_stats.year" %year
+    query=" SELECT AVG(height),MAX(height),MIN(height) from ncaa_stats,ncaa_players WHERE ncaa_stats.player_id=ncaa_players.id AND height != 0 AND ncaa_stats.year=%s GROUP BY ncaa_stats.year" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofHeight=[]
@@ -266,8 +266,8 @@ def annual_ncaa_top10_pts_pergame(year):
     return resultofSearching
 #ANNUAL NBA REVIEW
 #Average height and height range
-def annual_ncaa_height(year):
-    query="  SELECT AVG(height),MAX(height),MIN(height)from nba_stats,nba_players WHERE nba_stats.player_name=nba_players.name AND nba_stats.year=%s GROUP BY ncaa_stats.year" %year
+def annual_nba_height(year):
+    query="SELECT AVG(height),MAX(height),MIN(height)from nba_stats,nba_players WHERE nba_stats.player_name=nba_players.name AND nba_stats.year=%s GROUP BY nba_stats.year" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofHeight=[]
@@ -416,9 +416,11 @@ def top10_college():
     resultofSearching=[]
     resultofSearching.append(records)
     return resultofSearching
-
+'''
 if __name__=="__main__":
-    print(nba_player_lookup('Charles Barkley'))
-    print(ncaa_player_lookup(''))
+    print(nba_player_lookup('Keith Benson'))
+    print(ncaa_player_lookup('Keith Benson'))
     print(top10_college())
-    
+    print( annual_ncaa_height(2008))
+    print( annual_nba_height(2008))
+'''
