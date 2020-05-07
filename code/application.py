@@ -16,7 +16,7 @@ def redirectMenu(user_input):
     if (user_input == '1'): ncaaLookup()
     elif (user_input == '2'): nbaLookup()
     elif (user_input == '3'): annualNCAA()
-    elif (user_input == '4'): nbaStat()
+    elif (user_input == '4'): annualNBA()
     elif (user_input == '5'):
         print("You selected Something Fun!")
     else:
@@ -32,6 +32,18 @@ def printNCAAMenu():
     print("4. Top 10 overall players of the year")
     print("5. Highest scorers of the year")
     print("6. Worst overall players of the year")
+
+def printNBAMenu():
+    #Annual NBA Menu
+    print("Which of the following annual NBA statistics would you\nbe interested in seeing?\n")
+    print("Enter a number to get started.")
+    print("1. Average, minimum and maximum height")
+    print("2. Top 10 offensive players of the year")
+    print("3. Top 10 defensive players of the year")
+    print("4. Top 10 overall players of the year")
+    print("5. Highest scorers of the year")
+    print("6. Worst overall players of the year")
+
 
 
 def ncaaLookup():
@@ -335,24 +347,114 @@ def annualNCAA():
             user_input = input('\n').strip()
 
 
-def nbaMenu():
-    print("1. Average height and height range")
-    print("2. NBA Best Team")
-    print("3. NBA Worst Team")
-    print("4. Top 10 players with highest # of fg, three pointers, free throws, rebound, assists, etc")
-    print("5. Top 10 players with highest % of fg, three pointers, free throws, rebound, assists, etc")
+def annualNBA():
+    printNBAMenu()
+    user_input = input('\n').strip().lower()
 
-def nbaStat():
-    print("You selected Annual NBA statistics review")
-    year = input("\nWhich year do you want?(2000-2018)")
-    nbaMenu()
-    user_nba_input = input("\nWhat statistic do you want to view?")
-    if (user_nba_input == "1"):
-        results = annual_nba_height(year)
-        print("Average height for year {} is {:.2}in with range from {}in to {}in.".format(year, results[0][0][0], results[0][0][2], results[0][0][1]) )
-    #elif (user_nba_input == "2") 
+    while(True):
+        # Returns average, maximum, and minimum height of players for inputted year.
+        if (user_input == '1'):
+            yr = input("Enter a valid year (2000 - 2018) ==> ")
+            while (yr not in ['2000', '2001', '2002', '2003', '2004', '2005', '2006','2007', '2008', '2009', '2010'
+            '2011', '2012', '2013', '2014', '2015', '2016','2017', '2018']):
+                yr = input("Enter a valid year (2000 - 2018) ==> ").strip()
 
+            results = annual_nba_height(yr)
+            print("="*50)
+            print("Average height: {:.3f}".format(results[0][0][0]))
+            print("Maximum height: {:.3f}".format(results[0][0][2]))
+            print("Minimum height: {:.3f}".format(results[0][0][1]))
+            print("="*50)
+            time.sleep(1)
+            return  
 
+        # Return best offensive players for inputted year.
+        elif (user_input =='2'):
+            yr = input("Enter a valid year ==> ").strip()
+            while (yr not in ['2000', '2001', '2002', '2003', '2004', '2005', '2006','2007', '2008', '2009', '2010'
+            '2011', '2012', '2013', '2014', '2015', '2016','2017', '2018']):
+                yr = input("Enter a valid year (2000 - 2018) ==> ").strip()
+                
+            results = annual_nba_top10_offense(yr)
+            print("="*50)
+            print("Best offensive players of {}".format(yr))
+            i = 1
+            for r in results: 
+                print("{}. {}".format(i, r[0]))
+                i+= 1
+            print("="*50)
+            time.sleep(1)
+            return
+
+        elif (user_input == '3'):
+            yr = input("Enter a valid year ==> ").strip()
+            while (yr not in ['2000', '2001', '2002', '2003', '2004', '2005', '2006','2007', '2008', '2009', '2010'
+            '2011', '2012', '2013', '2014', '2015', '2016','2017', '2018']):
+                yr = input("Enter a valid year (2000 - 2018) ==> ").strip()
+
+            results = annual_nba_top10_defense(yr)
+            print("="*50)
+            print("Best defensive players of {}".format(yr))
+            i = 1
+            for r in results: 
+                print("{}. {}".format(i, r[0]))
+                i+= 1
+            print("="*50)
+            time.sleep(1)
+            return
+        # Return best overall players for inputted year.
+        elif (user_input =='4'):
+            yr = input("Enter a valid year ==> ").strip()
+            while (yr not in ['2000', '2001', '2002', '2003', '2004', '2005', '2006','2007', '2008', '2009', '2010'
+            '2011', '2012', '2013', '2014', '2015', '2016','2017', '2018']):
+                yr = input("Enter a valid year (2000 - 2018) ==> ").strip()
+            
+            results = annual_nba_top10(yr)
+            print("="*50)
+            print("Best overall players of {}".format(yr))
+            i = 1
+            for r in results: 
+                print("{}. {}".format(i, r[0]))
+                i+= 1
+            print("="*50)
+            time.sleep(1)
+            return
+
+        # Return highest scorers for inputted year.
+        elif (user_input == '5'):
+            yr = input("Enter a valid year ==> ").strip()
+            while (yr not in ['2000', '2001', '2002', '2003', '2004', '2005', '2006','2007', '2008', '2009', '2010'
+            '2011', '2012', '2013', '2014', '2015', '2016','2017', '2018']):
+                yr = input("Enter a valid year (2000 - 2018) ==> ").strip()
+
+            results = annual_nba_top10_pts(yr)
+            print("="*50)
+            print("Highest scoring players of {}".format(yr))
+            i = 1
+            for r in results: 
+                print("{}. {}".format(i, r[0]))
+                i+= 1
+            print("="*50)
+            time.sleep(1)
+            return
+
+        # Return worst overall players for inputted year.
+        elif (user_input == '6'):
+            yr = input("Enter a valid year ==> ").strip()
+            while (yr not in ['2000', '2001', '2002', '2003', '2004', '2005', '2006','2007', '2008', '2009', '2010'
+            '2011', '2012', '2013', '2014', '2015', '2016','2017', '2018']):
+                yr = input("Enter a valid year (2000 - 2018) ==> ").strip()
+            
+            results = annual_nba_worst10(yr)
+            print("="*50)
+            print("Worst overall players of {}".format(yr))
+            i = 1
+            for r in results: 
+                print("{}. {}".format(i, r[0]))
+                i+= 1
+            print("="*50)
+            time.sleep(1)
+            return
     
 
 if __name__ == '__main__':

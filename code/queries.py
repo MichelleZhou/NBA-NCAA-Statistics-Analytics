@@ -117,6 +117,38 @@ def annual_ncaa_top10_pts(year):
 
 
 #ANNUAL NBA REVIEW
+
+def annual_nba_top10_offense(year):
+    query = "SELECT player_name, CAST(field_goals+three_pointers AS FLOAT)/games_played AS rating FROM nba_stats WHERE year = %s ORDER BY rating DESC LIMIT 10" % year
+    cursor.execute(query)
+    records=cursor.fetchall()
+    return records
+
+def annual_nba_top10_defense(year):
+    query = "select player_name, CAST(rb_percentage/100 + ass_percentage/100 + bl_percentage + st_percentage AS FLOAT)/games_played AS rating FROM nba_stats WHERE year = %s ORDER BY rating DESC LIMIT 10" % year
+    cursor.execute(query)
+    records=cursor.fetchall()
+    return records    
+
+def annual_nba_top10(year):
+    query = "select player_name, CAST(rb_percentage/100 + ass_percentage/100 + bl_percentage + st_percentage + field_goals + three_pointers AS FLOAT)/games_played AS rating FROM nba_stats WHERE year = %s ORDER BY rating DESC LIMIT 10" % year
+    cursor.execute(query)
+    records=cursor.fetchall()
+    return records
+
+def annual_nba_worst10(year):
+    query = "select player_name, CAST(rb_percentage/100 + ass_percentage/100 + bl_percentage + st_percentage + field_goals + three_pointers AS FLOAT)/games_played AS rating FROM nba_stats WHERE year = %s ORDER BY rating LIMIT 10" % year
+    cursor.execute(query)
+    records=cursor.fetchall()
+    return records
+
+def annual_nba_top10_pts(year):
+    query="SELECT player_name from nba_stats WHERE year = %s ORDER BY points LIMIT 10"%year
+    cursor.execute(query)
+    records=cursor.fetchall()
+    return records
+
+
 #Average height and height range
 def annual_nba_height(year):
     query="SELECT AVG(height),MAX(height),MIN(height)from nba_stats,nba_players WHERE nba_stats.player_name=nba_players.name AND nba_stats.year=%s GROUP BY nba_stats.year" %year
