@@ -10,13 +10,25 @@ cursor = conn.cursor()
 
 
 # Preprocessing of csv file to replace all dashes - with zeroes for easier inserts
-def replaceDashesWithZeroes(infile, outfile):
+def replaceDashesWithZeroes(infile, outfile, ncaa):
     with open(infile, 'r') as inf, open(outfile, 'w',newline='\n', encoding='utf-8') as outf:
         reader = csv.reader(inf, delimiter=',')
         writer = csv.writer(outf)
 
         for row in reader:
             row = [x.replace('-', '0') if x == '-' else x for x in row]
+            # Convert height into inches for NCAA players.
+            if (ncaa == 'y' and row[8] != '-'):
+                r = row[8].split('-')
+                if (len(r) > 1): row[8] = str(int(r[0])*12+ int(r[1]))
+                else: row[8] = '0'
+
+            # Convert height into inches for NBA players.
+            elif (ncaa == 'n' and row[4] != '-'):
+                r = row[4].split('-')
+                if (len(r) > 1): row[4] = str(int(r[0])*12+int(r[1]))
+                else: row[4] = '0'
+
             writer.writerow(row)
 
     inf.close()
@@ -27,13 +39,18 @@ def replaceDashesWithZeroes(infile, outfile):
 # Helper function to process NCAA data insertion. 
 def processNCAA(infile, player_query, stats_query, y):
     fixedcsv = infile[:-4] + '_fixed.csv'
-    replaceDashesWithZeroes(infile, fixedcsv)
+    replaceDashesWithZeroes(infile, fixedcsv, 'y')
 
     # Open fixed csv file to insert accordingly.
     with open(fixedcsv) as inf:
         reader = csv.reader(inf, delimiter=',')
         for row in reader:
             # Insert statement for ncaa_players table.
+
+            # Format NCAA player names to match with NBA format (first last)
+            r = row[3].split(', ')
+            r.reverse()
+            row[3] = ' '.join(r)
             cursor.execute(
                 player_query,
                 dict( id=row[4], yr=y, name=row[3], school=row[0], class_yr=row[5], height=row[8],
@@ -60,7 +77,7 @@ def processNCAA(infile, player_query, stats_query, y):
 # Helper function to process NBA data insertion.
 def processNBA(infile, query, option):
     fixedcsv = infile[:-4] + '_fixed.csv'
-    replaceDashesWithZeroes(infile, fixedcsv)
+    replaceDashesWithZeroes(infile, fixedcsv, 'n')
 
     # Open fixed csv file to insert accordingly.
     with open(fixedcsv) as inf:

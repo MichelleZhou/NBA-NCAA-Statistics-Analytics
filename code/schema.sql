@@ -14,7 +14,7 @@ CREATE TABLE ncaa_players(
 	name 		    	    	VARCHAR(255),
 	school         				VARCHAR(255),
 	class_year          		VARCHAR(3),
-	height              		VARCHAR(5),
+	height              		INTEGER,
 	position            		VARCHAR(10),
 
 	PRIMARY KEY(id, year)
@@ -50,7 +50,7 @@ CREATE TABLE ncaa_stats(
 CREATE TABLE nba_players(
 	name     					VARCHAR(255) UNIQUE,
 	birthdate       			DATE,
-	height          			VARCHAR(40),
+	height          			INTEGER,
 	position        			VARCHAR(40),
 	college         			VARCHAR(255),
 
