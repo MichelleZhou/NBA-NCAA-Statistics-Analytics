@@ -12,26 +12,23 @@ cursor = conn.cursor()
 #NCAA PLAYER LOOKUP
 def ncaa_player_lookup(name):
     ret=[]
-    query="SELECT * FROM ncaa_stats,ncaa_players WHERE ncaa_players.id=ncaa_stats.player_id AND ncaa_players.name='%s'" %name
+    query="SELECT ncaa_players.name,ncaa_players.year, ncaa_players.school, ncaa_players.position, ncaa_stats.games_played, ncaa_stats.field_goals, ncaa_stats.fg_attempts, ncaa_stats.three_pointers, ncaa_stats.tp_attempts, ncaa_stats.rebounds, ncaa_stats.assists, ncaa_stats.blocks, ncaa_stats.steals, ncaa_stats.pts "\
+          "FROM ncaa_stats,ncaa_players "\
+          "WHERE ncaa_players.id=ncaa_stats.player_id AND ncaa_players.name ILIKE'%s'" % name
     cursor.execute(query)
     records=cursor.fetchall()
-    resultofSearching=[]
-    if(len(records))==0:
-        resultofSearching.append("Can not find this player in the datasets")
-        return resultofSearching
-    else:
-        resultofSearching.append(records)
-    ret.append(resultofSearching)
-    name.replace(',','')
-    query="SELECT * From ncaa_players,ncaa_stats,nba_stats WHERE ncaa_players.id=ncaa_stats.player_id AND ncaa_players.name LIKE  nba_stats.player_name AND ncaa_players.name ILIKE '%s'"%name
+    if (len(records)==0): return ret
+    else: ret.append(records)
+
+    query="SELECT nba_stats.team, nba_stats.year, nba_players.position, nba_stats.games_played, nba_stats.field_goals,nba_stats.fg_attempts, nba_stats.three_pointers, nba_stats.tp_attempts, nba_stats.rb_percentage, nba_stats.ass_percentage, nba_stats.st_percentage, nba_stats.bl_percentage, nba_stats.points "\
+          "From ncaa_players,ncaa_stats,nba_stats, nba_players "\
+          "WHERE ncaa_players.id=ncaa_stats.player_id AND "\
+          "nba_players.name = nba_stats.player_name AND "\
+          "ncaa_players.name LIKE  nba_stats.player_name "\
+          "AND ncaa_players.name ILIKE '%s'" % name
     cursor.execute(query)
     records = cursor.fetchall()
-    resultofEnteringNBA=[]
-    if len(records)==0: 
-        resultofEnteringNBA.append("This player was not on the nba team any time between 2000 and 2018") 
-    else:
-        resultofEnteringNBA.append(records)
-    ret.append(resultofEnteringNBA)
+    if (len(records)!=0): ret.append(records)
     return ret
         
 
@@ -39,24 +36,23 @@ def ncaa_player_lookup(name):
 #NBA PLAYER LOOKUP
 def nba_player_lookup(name):
     ret=[]
-    query="SELECT *FROM nba_stats WHERE nba_stats.player_name='%s'" % name
+    query="SELECT nba_stats.team, nba_stats.year, nba_players.position, nba_stats.games_played, nba_stats.field_goals,nba_stats.fg_attempts, nba_stats.three_pointers, nba_stats.tp_attempts, nba_stats.rb_percentage, nba_stats.ass_percentage, nba_stats.st_percentage, nba_stats.bl_percentage, nba_stats.points "\
+          "FROM nba_stats, nba_players "\
+          "WHERE nba_stats.player_name = nba_players.name AND "\
+          "nba_stats.player_name ILIKE '%s'" % name
     cursor.execute(query)
     records=cursor.fetchall()
-    resultofSearching=[]
-    if(len(records))==0:
-        resultofSearching.append("Can not find this player in the datasets")
-    else:
-        resultofSearching.append(records)
-    ret.append(resultofSearching)
-    query="SELECT * From nba_players,ncaa_players,ncaa_stats WHERE ncaa_players.id=ncaa_stats.player_id AND ncaa_players.name LIKE  nba_players.name AND nba_players.name ILIKE '%s' " %name
+    if(len(records))==0: return ret
+    else: ret.append(records)
+    
+    query="SELECT ncaa_players.name,ncaa_players.year, ncaa_players.school, ncaa_players.position, ncaa_stats.games_played, ncaa_stats.field_goals, ncaa_stats.fg_attempts, ncaa_stats.three_pointers, ncaa_stats.tp_attempts, ncaa_stats.rebounds, ncaa_stats.assists, ncaa_stats.blocks, ncaa_stats.steals, ncaa_stats.pts "\
+          "From nba_players,ncaa_players,ncaa_stats "\
+          "WHERE ncaa_players.id=ncaa_stats.player_id AND "\
+          "ncaa_players.name = nba_players.name AND "\
+          "nba_players.name ILIKE '%s' " %name
     cursor.execute(query)
     records = cursor.fetchall()
-    resultofWasInNCAA=[]
-    if len(records)==0: 
-        resultofWasInNCAA.append("This player was not on the ncaa team any time between 2000 and 2018" )
-    else:
-        resultofWasInNCAA.append(records)
-    ret.append(resultofWasInNCAA)
+    if len(records) !=0: ret.append(records)
     return ret
 
 
@@ -276,6 +272,7 @@ def annual_nba_height(year):
     else:
         resultofHeight.append(records)
     return resultofHeight
+
 #top 10 players with highest # of fg, three pointers, free throws, rebound, assists, etc
 def annual_nba_fg_attempts(year):
     query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY fg_attempts DESC LIMIT 10" %year
@@ -331,6 +328,7 @@ def annual_nba_three_pointers(year):
     else:
         resultofSearching.append(records)
     return resultofSearching 
+
 #Top 10 players with highest % of attribute
 def annual_nba_fg_percentage(year):
     query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY fg_percentage DESC LIMIT 10" %year

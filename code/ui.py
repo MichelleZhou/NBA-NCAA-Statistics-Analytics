@@ -21,8 +21,9 @@ if __name__ == '__main__':
 	window.title('Database System Project - Basketball')
 	window.geometry('600x450')
 	window.resizable(width=False, height=False)
+
 	#Menu gif
-	image_file = [tk.PhotoImage(file='dear-basketball.gif', format='gif -index %i' %(i)) for i in range(9)]
+	image_file = [tk.PhotoImage(file='code/dear-basketball.gif', format='gif -index %i' %(i)) for i in range(9)]
 
 	def update(ind):
 		if ind == 9:
