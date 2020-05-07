@@ -28,7 +28,7 @@ def ncaa_player_lookup(name):
     records = cursor.fetchall()
     resultofEnteringNBA=[]
     if len(records)==0: 
-        resultofEnteringNBA.append("This player was not on the nba team any time between 2000 and 2017") 
+        resultofEnteringNBA.append("This player was not on the nba team any time between 2000 and 2018") 
     else:
         resultofEnteringNBA.append(records)
     ret.append(resultofEnteringNBA)
@@ -53,7 +53,7 @@ def nba_player_lookup(name):
     records = cursor.fetchall()
     resultofWasInNCAA=[]
     if len(records)==0: 
-        resultofWasInNCAA.append("This player was not on the ncaa team any time between 2000 and 2017" )
+        resultofWasInNCAA.append("This player was not on the ncaa team any time between 2000 and 2018" )
     else:
         resultofWasInNCAA.append(records)
     ret.append(resultofWasInNCAA)
@@ -272,7 +272,7 @@ def annual_nba_height(year):
     records=cursor.fetchall()
     resultofHeight=[]
     if len(records)==0:
-        resultofHeight.append("The year asked is not in database usage[2000-2017]")  
+        resultofHeight.append("The year asked is not in database usage[2000-2018]")  
     else:
         resultofHeight.append(records)
     return resultofHeight
@@ -283,7 +283,7 @@ def annual_nba_fg_attempts(year):
     records=cursor.fetchall()
     resultofSearching=[]
     if len(records)==0:
-        resultofSearching.append("The year asked is not in database usage[2000-2017]")  
+        resultofSearching.append("The year asked is not in database usage[2000-2018]")  
     else:
         resultofSearching.append(records)
     return resultofSearching
@@ -294,7 +294,7 @@ def annual_nba_tp_attempts(year):
     records=cursor.fetchall()
     resultofSearching=[]
     if len(records)==0:
-        resultofSearching.append("The year asked is not in database usage[2000-2017]")  
+        resultofSearching.append("The year asked is not in database usage[2000-2018]")  
     else:
         resultofSearching.append(records)
     return resultofSearching
@@ -305,7 +305,7 @@ def annual_nba_points(year):
     records=cursor.fetchall()
     resultofSearching=[]
     if len(records)==0:
-        resultofSearching.append("The year asked is not in database usage[2000-2017]")  
+        resultofSearching.append("The year asked is not in database usage[2000-2018]")  
     else:
         resultofSearching.append(records)
     return resultofSearching
@@ -316,7 +316,7 @@ def annual_nba_games_played(year):
     records=cursor.fetchall()
     resultofSearching=[]
     if len(records)==0:
-        resultofSearching.append("The year asked is not in database usage[2000-2017]")  
+        resultofSearching.append("The year asked is not in database usage[2000-2018]")  
     else:
         resultofSearching.append(records)
     return resultofSearching
@@ -327,7 +327,7 @@ def annual_nba_three_pointers(year):
     records=cursor.fetchall()
     resultofSearching=[]
     if len(records)==0:
-        resultofSearching.append("The year asked is not in database usage[2000-2017]")  
+        resultofSearching.append("The year asked is not in database usage[2000-2018]")  
     else:
         resultofSearching.append(records)
     return resultofSearching 
@@ -338,7 +338,7 @@ def annual_nba_fg_percentage(year):
     records=cursor.fetchall()
     resultofSearching=[]
     if len(records)==0:
-        resultofSearching.append("The year asked is not in database usage[2000-2017]")  
+        resultofSearching.append("The year asked is not in database usage[2000-2018]")  
     else:
         resultofSearching.append(records)
     return resultofSearching
@@ -349,7 +349,7 @@ def annual_nba_tp_percentage(year):
     records=cursor.fetchall()
     resultofSearching=[]
     if len(records)==0:
-        resultofSearching.append("The year asked is not in database usage[2000-2017]")  
+        resultofSearching.append("The year asked is not in database usage[2000-2018]")  
     else:
         resultofSearching.append(records)
     return resultofSearching
@@ -360,7 +360,7 @@ def annual_nba_rb_percentage(year):
     records=cursor.fetchall()
     resultofSearching=[]
     if len(records)==0:
-        resultofSearching.append("The year asked is not in database usage[2000-2017]")  
+        resultofSearching.append("The year asked is not in database usage[2000-2018]")  
     else:
         resultofSearching.append(records)
     return resultofSearching
@@ -371,7 +371,7 @@ def annual_nba_ass_percentage(year):
     records=cursor.fetchall()
     resultofSearching=[]
     if len(records)==0:
-        resultofSearching.append("The year asked is not in database usage[2000-2017]")  
+        resultofSearching.append("The year asked is not in database usage[2000-2018]")  
     else:
         resultofSearching.append(records)
     return resultofSearching
@@ -382,7 +382,7 @@ def annual_nba_st_percentage(year):
     records=cursor.fetchall()
     resultofSearching=[]
     if len(records)==0:
-        resultofSearching.append("The year asked is not in database usage[2000-2017]")  
+        resultofSearching.append("The year asked is not in database usage[2000-2018]")  
     else:
         resultofSearching.append(records)
     return resultofSearching 
@@ -393,7 +393,7 @@ def annual_nba_bl_percentage(year):
     records=cursor.fetchall()
     resultofSearching=[]
     if len(records)==0:
-        resultofSearching.append("The year asked is not in database usage[2000-2017]")  
+        resultofSearching.append("The year asked is not in database usage[2000-2018]")  
     else:
         resultofSearching.append(records)
     return resultofSearching 
@@ -404,7 +404,7 @@ def annual_nba_turnover_percentage(year):
     records=cursor.fetchall()
     resultofSearching=[]
     if len(records)==0:
-        resultofSearching.append("The year asked is not in database usage[2000-2017]")  
+        resultofSearching.append("The year asked is not in database usage[2000-2018]")  
     else:
         resultofSearching.append(records)
     return resultofSearching
@@ -424,3 +424,4 @@ if __name__=="__main__":
     print( annual_ncaa_height(2008))
     print( annual_nba_height(2008))
 '''
+
