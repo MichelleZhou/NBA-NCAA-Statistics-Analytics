@@ -96,8 +96,8 @@ def ncaaLookup():
                 tot_thrpatt += r[7]
                 tot_rb += r[8]
                 tot_ass += r[9]
-                tot_bl += r[10]
-                tot_st += r[11]
+                tot_bl += r[11]
+                tot_st += r[10]
                 tot_pt += r[12]
 
             print("Team(s): ",end='')
@@ -148,8 +148,8 @@ def nbaLookup():
             tot_thrpatt += r[7]
             tot_rb += r[8]
             tot_ass += r[9]
-            tot_bl += r[10]
-            tot_st += r[11]
+            tot_bl += r[11]
+            tot_st += r[10]
             tot_pt += r[12]
 
         print("Team(s): ",end='')

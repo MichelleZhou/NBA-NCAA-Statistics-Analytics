@@ -1,4 +1,7 @@
 # Application overview
+
+We decided to look into college and professional basketball data to get a better understanding of players' performance during college and whether past performance best predicts future performance. However, due to the limitations of our datasets (the source we found had 1 csv per year but we were only allowed to provide a total of 5 datasets), a lot of our queries were one-sided; i.e. players were either in the NBA or NCAA. However, of the 399 players who **did** get drafted into the NBA after their NCAA careers, we were able to see similar statistics as they moved from NCAA to NBA.  
+
 ### Members
 - Yaoyu Cheng
 - Ruilin Jin
@@ -8,18 +11,16 @@
  
 
 ## Available functionality
-- [ ] NCAA Player lookup
-      -> enter in NBA or not
-		-> in
-			-> stat
-		-> not in
-			-> stat
-- [ ] NBA Player lookup
-      -> was in NCAA or not
-		-> in 
-			->stat
-		-> not in
-			-> stat
+- [x] NCAA Player lookup
+	> Determines whether the specified player was on an NCAA team between the years of 2008 and 2010.
+	> If the specified player was on an NCAA team, search through the database to see whether they
+	> were on an NBA team from 2000 until 2018. Player statistics are outputted for any reults found.
+- [x] NBA Player lookup
+    > Determines whether the specified player was on an NBA team any time between 2000 and 2018.
+    > Relevant statistics pertaining to the player's carrer shooting averages, rebound averages,
+    > and other relevant data are calculated and outputted. Again, if the player was also on an NCAA
+    > team between 2008 and 2010, those statistics are calculated for their college basketball career
+    > as well. 
 - [ ] Annual NCAA statistics review
         > Average height and height range
 	> Best school
