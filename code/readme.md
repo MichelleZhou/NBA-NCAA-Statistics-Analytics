@@ -16,11 +16,11 @@ We decided to look into college and professional basketball data to get a better
 - [x] NBA Player lookup
     > Determines whether the specified player was on an NBA team any time between 2000 and 2018. Relevant statistics pertaining to the player's carrer shooting averages, rebound averages, and other relevant data are calculated and outputted. Again, if the player was also on an NCAA team between 2008 and 2010, those statistics are calculated for their college basketball career as well. 
 - [x] Annual NCAA statistics review
-    > Several functionalities are included in this menu:
-	> Best school
-	> Worst school
-	> Top 10 players with highest # of fg, three pointers, free throws, rebound, assists, etc
-	> Top 10 players with highest % of ^^
+    > Several functionalities are included in this menu to give a broader glimpse into some NCAA stats:
+	- Average height of players for each year.
+	- Best offensive and defensive players for a given year.
+	- Best and worst overall players for a given year.
+	- Highest scoring players for a given year.
 
 - [ ] Annual NBA statistics review
         > Average height and height range
