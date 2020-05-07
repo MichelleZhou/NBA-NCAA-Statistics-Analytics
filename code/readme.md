@@ -22,12 +22,12 @@ We decided to look into college and professional basketball data to get a better
 	- Best and worst overall players for a given year.
 	- Highest scoring players for a given year.
 
-- [ ] Annual NBA statistics review
-        > Average height and height range
-	> Best Team
-	> Worst Team
-	> Top 10 players with highest # of fg, three pointers, free throws, rebound, assists, etc
-	> Top 10 players with highest % of ^^
+- [x] Annual NBA statistics review
+    > Several functionalities are included in this menu to give a broader glimpse into some NCAA stats:
+	- Average height of players for each year.
+	- Best offensive and defensive players for a given year.
+	- Best and worst overall players for a given year.
+	- Highest scoring players for a given year.
 
 
 ## Setting up the application
