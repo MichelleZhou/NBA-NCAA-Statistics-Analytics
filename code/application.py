@@ -16,8 +16,7 @@ def redirectMenu(user_input):
     if (user_input == '1'): ncaaLookup()
     elif (user_input == '2'): nbaLookup()
     elif (user_input == '3'): annualNCAA()
-    elif (user_input == '4'):
-        print("You selected Annual NBA Statistics")
+    elif (user_input == '4'): nbaStat()
     elif (user_input == '5'):
         print("You selected Something Fun!")
     else:
@@ -224,6 +223,7 @@ def nbaLookup():
               
     time.sleep(2)
 
+
 def annualNCAA():
     printNCAAMenu()
     user_input = input('\n').strip().lower()
@@ -333,6 +333,20 @@ def annualNCAA():
             print("Please check your selection: {}".format(user_input))
             printNCAAMenu()
             user_input = input('\n').strip()
+
+
+def nbaMenu():
+    print("Enter a number to get started or 'Quit' to exit.\n")
+    print("1. Average height and weight range")
+    print("1. NBA Best Team")
+    print("2. NBA Worst Team")
+    print("3. Top 10 players with highest # of fg, three pointers, free throws, rebound, assists, etc")
+    print("4. Top 10 players with highest % of fg, three pointers, free throws, rebound, assists, etc")
+
+def nbaStat():
+    print("You selected Annual NBA statistics review")
+    nbaMenu()
+    user_nba_pick = input("\nWhat statistic do you want to view?")
 
     
 
