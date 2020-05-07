@@ -16,7 +16,7 @@ def redirectMenu(user_input):
     if (user_input == '1'): ncaaLookup()
     elif (user_input == '2'): nbaLookup()
     elif (user_input == '3'): annualNCAA()
-    elif (user_input == '4'): nbaStat()
+    elif (user_input == '4'): annualNBA()
     elif (user_input == '5'): interestingStats()
     else:
         print("Please check your selection: {}".format(user_input))
