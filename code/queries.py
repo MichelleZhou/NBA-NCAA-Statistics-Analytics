@@ -263,21 +263,10 @@ def annual_nba_turnover_percentage(year):
         resultofSearching.append(records)
     return resultofSearching
 
-def top10_college():
-    query="SELECT college,COUNT(college) AS frequency FROM nba_players WHERE college ~ ' ' GROUP BY college ORDER BY COUNT(college)  DESC LIMIT 10"
+## INTERESTING STATS
+
+def top10_college(amt):
+    query="SELECT college,COUNT(college) AS frequency FROM nba_players WHERE college ~ ' ' GROUP BY college ORDER BY COUNT(college)  DESC LIMIT %s" %amt
     cursor.execute(query)
     records=cursor.fetchall()
-    resultofSearching=[]
-    resultofSearching.append(records)
-    return resultofSearching
-
-
-'''
-if __name__=="__main__":
-    print(nba_player_lookup('Keith Benson'))
-    print(ncaa_player_lookup('Keith Benson'))
-    print(top10_college())
-    print( annual_ncaa_height(2008))
-    print( annual_nba_height(2008))
-'''
-
+    return records

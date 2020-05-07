@@ -17,8 +17,7 @@ def redirectMenu(user_input):
     elif (user_input == '2'): nbaLookup()
     elif (user_input == '3'): annualNCAA()
     elif (user_input == '4'): nbaStat()
-    elif (user_input == '5'):
-        print("You selected Something Fun!")
+    elif (user_input == '5'): interestingStats()
     else:
         print("Please check your selection: {}".format(user_input))
 
@@ -33,10 +32,6 @@ def printNCAAMenu():
     print("5. Highest scorers of the year")
     print("6. Worst overall players of the year")
 
-def printInterestingMenu():
-    #Interesting Menu with some analytical data for NCAA and NBA
-    print("Which of the following statistics would you like to see?\n")
-    print("1. Players that ")
 
 def ncaaLookup():
     print("You selected NCAA Player Lookup...")
@@ -338,8 +333,20 @@ def annualNCAA():
             printNCAAMenu()
             user_input = input('\n').strip()
 
-def interestingMenu():
 
+def interestingStats():
+    print("See which colleges produced the most NBA players.")
+    user_input = int(input("How many colleges do you want to see? ==> ").strip())
+    while user_input not in list(range(1,101)):
+        user_input = int(input("Please enter a valid number (1 - 100) ==> ").strip())
+
+    results = top10_college(user_input)
+    print("="*60)
+    print("{:^55} | {:<5}".format('University', '#'))
+    print('-'*60)
+    for r in results:
+        print(" {:<55}| {:<5}".format(r[0], r[1]))
+    print("="*60)
 
 def nbaMenu():
     print("1. Average height and height range")
@@ -377,4 +384,3 @@ if __name__ == '__main__':
         time.sleep(0.4)
         printHomeMenu()
         user_input = input('\n').strip().lower()
-
