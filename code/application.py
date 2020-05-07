@@ -15,14 +15,24 @@ def printHomeMenu():
 def redirectMenu(user_input):
     if (user_input == '1'): ncaaLookup()
     elif (user_input == '2'): nbaLookup()
-    elif (user_input == '3'):
-        print("You selected Annual NCAA Statistics")
+    elif (user_input == '3'): annualNCAA()
     elif (user_input == '4'):
         print("You selected Annual NBA Statistics")
     elif (user_input == '5'):
         print("You selected Something Fun!")
     else:
         print("Please check your selection: {}".format(user_input))
+
+def printNCAAMenu():
+    #Annual NCAA Menu
+    print("Which of the following annual NCAA statistics would you\nbe interested in seeing?\n")
+    print("Enter a number to get started.")
+    print("1. Average, minimum and maximum height")
+    print("2. Top 10 offensive players of the year")
+    print("3. Top 10 defensive players of the year")
+    print("4. Top 10 overall players of the year")
+    print("5. Highest scorers of the year")
+    print("6. Worst overall players of the year")
 
 
 def ncaaLookup():
@@ -214,7 +224,117 @@ def nbaLookup():
               
     time.sleep(2)
 
+def annualNCAA():
+    printNCAAMenu()
+    user_input = input('\n').strip().lower()
+    
+    while(True):
+        # Returns average, maximum, and minimum height of players for inputted year.
+        if (user_input == '1'):
+            yr = input("Enter a valid year ==> ").strip()
+            while (yr not in ['2008', '2009', '2010']):
+                yr = input("Enter a valid year (2008 - 2010) ==> ").strip()
 
+            results = annual_ncaa_height(yr)
+            print("="*50)
+            print("Average height: {:.3f}".format(results[0][0]))
+            print("Maximum height: {:.3f}".format(results[0][1]))
+            print("Minimum height: {:.3f}".format(results[0][2]))
+            print("="*50)
+            time.sleep(1)
+            return
+        
+        # Return best offensive players for inputted year.
+        elif (user_input =='2'):
+            yr = input("Enter a valid year ==> ").strip()
+            while (yr not in ['2008', '2009', '2010']):
+                yr = input("Enter a valid year (2008 - 2010) ==> ").strip()
+
+            results = annual_ncaa_top10_offense(yr)
+            print("="*50)
+            print("Best offensive players of {}".format(yr))
+            i = 1
+            for r in results: 
+                print("{}. {}".format(i, r[0]))
+                i+= 1
+            print("="*50)
+            time.sleep(1)
+            return
+        
+        # Return best defensive players for inputted year.
+        elif (user_input == '3'):
+            yr = input("Enter a valid year ==> ").strip()
+            while (yr not in ['2008', '2009', '2010']):
+                yr = input("Enter a valid year (2008 - 2010) ==> ").strip()
+            
+            results = annual_ncaa_top10_defense(yr)
+            print("="*50)
+            print("Best defensive players of {}".format(yr))
+            i = 1
+            for r in results: 
+                print("{}. {}".format(i, r[0]))
+                i+= 1
+            print("="*50)
+            time.sleep(1)
+            return
+        
+        # Return best overall players for inputted year.
+        elif (user_input =='4'):
+            yr = input("Enter a valid year ==> ").strip()
+            while (yr not in ['2008', '2009', '2010']):
+                yr = input("Enter a valid year (2008 - 2010) ==> ").strip()
+            
+            results = annual_ncaa_top10(yr)
+            print("="*50)
+            print("Best overall players of {}".format(yr))
+            i = 1
+            for r in results: 
+                print("{}. {}".format(i, r[0]))
+                i+= 1
+            print("="*50)
+            time.sleep(1)
+            return
+
+        # Return highest scorers for inputted year.
+        elif (user_input == '5'):
+            yr = input("Enter a valid year ==> ").strip()
+            while (yr not in ['2008', '2009', '2010']):
+                yr = input("Enter a valid year (2008 - 2010) ==> ").strip()
+            
+            results = annual_ncaa_top10_pts(yr)
+            print("="*50)
+            print("Highest scoring players of {}".format(yr))
+            i = 1
+            for r in results: 
+                print("{}. {}".format(i, r[0]))
+                i+= 1
+            print("="*50)
+            time.sleep(1)
+            return
+
+        # Return worst overall players for inputted year.
+        elif (user_input == '6'):
+            yr = input("Enter a valid year ==> ").strip()
+            while (yr not in ['2008', '2009', '2010']):
+                yr = input("Enter a valid year (2008 - 2010) ==> ").strip()
+            
+            results = annual_ncaa_worst10(yr)
+            print("="*50)
+            print("Worst overall players of {}".format(yr))
+            i = 1
+            for r in results: 
+                print("{}. {}".format(i, r[0]))
+                i+= 1
+            print("="*50)
+            time.sleep(1)
+            return
+
+        else:
+            print("Please check your selection: {}".format(user_input))
+            printNCAAMenu()
+            user_input = input('\n').strip()
+
+    
 
 if __name__ == '__main__':
     
@@ -232,3 +352,4 @@ if __name__ == '__main__':
         time.sleep(0.4)
         printHomeMenu()
         user_input = input('\n').strip().lower()
+
