@@ -275,7 +275,7 @@ def annual_nba_height(year):
 
 #top 10 players with highest # of fg, three pointers, free throws, rebound, assists, etc
 def annual_nba_fg_attempts(year):
-    query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY fg_attempts DESC LIMIT 10" %year
+    query="SELECT player_name FROM nba_stats WHERE nba_stats.year=%s ORDER BY fg_attempts DESC LIMIT 10" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofSearching=[]
@@ -286,7 +286,7 @@ def annual_nba_fg_attempts(year):
     return resultofSearching
 
 def annual_nba_tp_attempts(year):
-    query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY tp_attempts DESC LIMIT 10" %year
+    query="SELECT player_name FROM nba_stats WHERE nba_stats.year=%s ORDER BY tp_attempts DESC LIMIT 10" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofSearching=[]
@@ -297,7 +297,7 @@ def annual_nba_tp_attempts(year):
     return resultofSearching
 
 def annual_nba_points(year):
-    query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY points DESC LIMIT 10" %year
+    query="SELECT player_name FROM nba_stats WHERE nba_stats.year=%s ORDER BY points DESC LIMIT 10" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofSearching=[]
@@ -308,7 +308,7 @@ def annual_nba_points(year):
     return resultofSearching
 
 def annual_nba_games_played(year):
-    query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY games_played DESC LIMIT 10" %year
+    query="SELECT player_name FROM nba_stats WHERE nba_stats.year=%s ORDER BY games_played DESC LIMIT 10" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofSearching=[]
@@ -319,7 +319,7 @@ def annual_nba_games_played(year):
     return resultofSearching
 
 def annual_nba_three_pointers(year):
-    query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY three_pointers DESC LIMIT 10" %year
+    query="SELECT player_name FROM nba_stats WHERE nba_stats.year=%s ORDER BY three_pointers DESC LIMIT 10" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofSearching=[]
@@ -331,7 +331,7 @@ def annual_nba_three_pointers(year):
 
 #Top 10 players with highest % of attribute
 def annual_nba_fg_percentage(year):
-    query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY fg_percentage DESC LIMIT 10" %year
+    query="SELECT player_name FROM nba_stats WHERE nba_stats.year=%s ORDER BY fg_percentage DESC LIMIT 10" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofSearching=[]
@@ -342,7 +342,7 @@ def annual_nba_fg_percentage(year):
     return resultofSearching
 
 def annual_nba_tp_percentage(year):
-    query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY tp_percentage DESC LIMIT 10" %year
+    query="SELECT player_name FROM nba_stats WHERE nba_stats.year=%s ORDER BY tp_percentage DESC LIMIT 10" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofSearching=[]
@@ -353,7 +353,7 @@ def annual_nba_tp_percentage(year):
     return resultofSearching
 
 def annual_nba_rb_percentage(year):
-    query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY rb_percentage DESC LIMIT 10" %year
+    query="SELECT player_name FROM nba_stats WHERE nba_stats.year=%s ORDER BY rb_percentage DESC LIMIT 10" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofSearching=[]
@@ -364,7 +364,7 @@ def annual_nba_rb_percentage(year):
     return resultofSearching
 
 def annual_nba_ass_percentage(year):
-    query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY  ass_percentage DESC LIMIT 10" %year
+    query="SELECT player_name FROM nba_stats WHERE nba_stats.year=%s ORDER BY  ass_percentage DESC LIMIT 10" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofSearching=[]
@@ -375,7 +375,7 @@ def annual_nba_ass_percentage(year):
     return resultofSearching
 
 def annual_nba_st_percentage(year):
-    query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY st_percentage DESC LIMIT 10" %year
+    query="SELECT player_name FROM nba_stats WHERE nba_stats.year=%s ORDER BY st_percentage DESC LIMIT 10" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofSearching=[]
@@ -386,7 +386,7 @@ def annual_nba_st_percentage(year):
     return resultofSearching 
 
 def annual_nba_bl_percentage(year):
-    query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY bl_percentage DESC LIMIT 10" %year
+    query="SELECT player_name FROM nba_stats WHERE nba_stats.year=%s ORDER BY bl_percentage DESC LIMIT 10" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofSearching=[]
@@ -397,7 +397,7 @@ def annual_nba_bl_percentage(year):
     return resultofSearching 
 
 def annual_nba_turnover_percentage(year):
-    query="SELECT player_name FROM nba_stats AND nba_stats.year=%s ORDER BY turnover_percentage DESC LIMIT 10" %year
+    query="SELECT player_name FROM nba_stats WHERE nba_stats.year=%s ORDER BY turnover_percentage DESC LIMIT 10" %year
     cursor.execute(query)
     records=cursor.fetchall()
     resultofSearching=[]
@@ -414,6 +414,8 @@ def top10_college():
     resultofSearching=[]
     resultofSearching.append(records)
     return resultofSearching
+
+
 '''
 if __name__=="__main__":
     print(nba_player_lookup('Keith Benson'))

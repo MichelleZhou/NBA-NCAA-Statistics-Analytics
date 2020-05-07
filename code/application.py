@@ -214,17 +214,22 @@ def nbaLookup():
     time.sleep(2)
 
 def nbaMenu():
-    print("Enter a number to get started or 'Quit' to exit.\n")
-    print("1. Average height and weight range")
-    print("1. NBA Best Team")
-    print("2. NBA Worst Team")
-    print("3. Top 10 players with highest # of fg, three pointers, free throws, rebound, assists, etc")
-    print("4. Top 10 players with highest % of fg, three pointers, free throws, rebound, assists, etc")
+    print("1. Average height and height range")
+    print("2. NBA Best Team")
+    print("3. NBA Worst Team")
+    print("4. Top 10 players with highest # of fg, three pointers, free throws, rebound, assists, etc")
+    print("5. Top 10 players with highest % of fg, three pointers, free throws, rebound, assists, etc")
 
 def nbaStat():
     print("You selected Annual NBA statistics review")
+    year = input("\nWhich year do you want?(2000-2018)")
     nbaMenu()
-    user_nba_pick = input("\nWhat statistic do you want to view?")
+    user_nba_input = input("\nWhat statistic do you want to view?")
+    if (user_nba_input == "1"):
+        results = annual_nba_height(year)
+        print("Average height for year {} is {:.2}in with range from {}in to {}in.".format(year, results[0][0][0], results[0][0][2], results[0][0][1]) )
+    #elif (user_nba_input == "2") 
+
 
 
 
